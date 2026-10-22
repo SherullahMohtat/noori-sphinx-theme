@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script type="text/javascript" src="{{ pathto('_static/searchtools.js', 1) }}"></script>
+  <script type="text/javascript" src="{{ pathto('_static/language_data.js', 1) }}"></script>
+  <script type="text/javascript">
+    jQuery(function() { Search.loadIndex("{{ pathto('searchindex.js', 1) }}"); });
+  </script>
+  <script type="text/javascript" id="searchindexloader"></script>
+{% endblock %}
+
+{% block content %}
+<div class="noori-search-page">
+  <h1 id="search-documentation">Search Documentation</h1>
+  <p class="noori-search-lead">Type keywords below to search across all guides, APIs, and ecosystem pages.</p>
+  
+  <form class="noori-page-search-form" action="" method="get">
+    <div class="noori-page-search-input-wrap">
+      <svg class="noori-search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" name="q" value="" placeholder="Type search term..." class="noori-page-search-input" autofocus />
+      <button type="submit" class="noori-button noori-button-primary">Search</button>
+    </div>
+    <span id="search-progress" style="padding-left: 10px"></span>
+  </form>
+
+  <div id="search-results" class="noori-search-results">
+    {% if query %}
+    <h2>Search Results for <span class="noori-highlight">"{{ query }}"</span></h2>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,101 @@
+{% extends "!basic/layout.html" %}
+
+{%- block doctype -%}
+<!DOCTYPE html>
+{%- endblock %}
+
+{%- block html_tag -%}
+{%- set rtl_languages = ['ar', 'fa', 'ur', 'he', 'ps', 'ug', 'ckb', 'ku', 'sd', 'yi'] -%}
+{%- set initial_dir = 'rtl' if (language in rtl_languages or theme_direction == 'rtl') else 'ltr' -%}
+<html lang="{{ language or 'en' }}" dir="{{ initial_dir }}" data-theme="dark" data-default-dir="{{ initial_dir }}">
+{%- endblock %}
+
+{%- block extrahead %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
+  
+  {# Google Fonts: Inter & JetBrains Mono (Latin) + Cairo & Vazirmatn (Arabic, Persian, Urdu) #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  {# Theme Stylesheets #}
+  <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/noori.css', 1) }}" />
+  <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/code.css', 1) }}" />
+  <link rel="stylesheet" type="text/css" href="{{ pathto('_static/css/components.css', 1) }}" />
+
+  {# Theme JavaScript #}
+  <script defer src="{{ pathto('_static/js/noori.js', 1) }}"></script>
+  {{ super() }}
+{%- endblock %}
+
+{# Suppress basic theme relbars and default sidebars so we control layout completely #}
+{%- block relbar1 %}{%- endblock %}
+{%- block relbar2 %}{%- endblock %}
+{%- block sidebar1 %}{%- endblock %}
+{%- block sidebar2 %}{%- endblock %}
+
+{%- block header %}
+  {% include "navbar.html" %}
+{%- endblock %}
+
+{%- block content %}
+<div class="noori-layout-container">
+  {# Backdrop for mobile sidebar drawer #}
+  <div class="noori-backdrop" id="noori-backdrop"></div>
+
+  {# Left Navigation Sidebar #}
+  {% include "sidebar.html" %}
+
+  {# Middle Main Content Area #}
+  <main class="noori-main" id="main-content" role="main">
+    <div class="noori-content-wrapper">
+      {% include "breadcrumbs.html" %}
+
+      <article class="noori-article" role="article">
+        {% block body %}{% endblock %}
+      </article>
+
+      {# Previous / Next Page Navigation Cards #}
+      {% if prev or next %}
+      <nav class="noori-pagination" aria-label="Page navigation">
+        {% if prev %}
+        <a href="{{ prev.link|e }}" class="noori-pagination-card noori-pagination-prev" rel="prev">
+          <span class="noori-pagination-sub">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Previous
+          </span>
+          <span class="noori-pagination-title">{{ prev.title }}</span>
+        </a>
+        {% else %}
+        <div class="noori-pagination-spacer"></div>
+        {% endif %}
+
+        {% if next %}
+        <a href="{{ next.link|e }}" class="noori-pagination-card noori-pagination-next" rel="next">
+          <span class="noori-pagination-sub">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </span>
+          <span class="noori-pagination-title">{{ next.title }}</span>
+        </a>
+        {% endif %}
+      </nav>
+      {% endif %}
+
+      {% include "footer.html" %}
+    </div>
+  </main>
+
+  {# Right On-Page Secondary Table of Contents #}
+  {% include "toc.html" %}
+</div>
+{%- endblock %}
+
+{%- block footer %}
+{# Handled inside main content wrapper #}
+{%- endblock %}

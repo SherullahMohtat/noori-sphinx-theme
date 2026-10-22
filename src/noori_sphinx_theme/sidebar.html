@@ -1,0 +1,23 @@
+<aside class="noori-sidebar" id="noori-sidebar">
+  <div class="noori-sidebar-inner">
+    {% if theme_announcement %}
+    <div class="noori-sidebar-badge">
+      <span class="noori-pulse-dot"></span>
+      <span>{{ theme_announcement }}</span>
+    </div>
+    {% endif %}
+
+    <div class="noori-sidebar-nav-header">
+      <span class="noori-sidebar-nav-title">Navigation</span>
+    </div>
+
+    <nav class="noori-toc-tree" aria-label="Documentation Navigation">
+      {% set toctree_content = toctree(maxdepth=4, collapse=False, includehidden=True, titles_only=False) %}
+      {% if toctree_content %}
+        {{ toctree_content }}
+      {% else %}
+        <p class="noori-toc-empty">No navigation tree defined.</p>
+      {% endif %}
+    </nav>
+  </div>
+</aside>

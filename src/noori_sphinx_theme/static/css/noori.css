@@ -1,0 +1,1042 @@
+/* ==========================================================================
+   Noori Sphinx Theme - Modern Deep Tech Design System
+   ========================================================================== */
+
+:root {
+  /* Font Families */
+  --noori-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --noori-font-mono: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing & Sizing */
+  --noori-header-height: 64px;
+  --noori-ecosystem-height: 38px;
+  --noori-sidebar-width: 280px;
+  --noori-toc-width: 250px;
+  --noori-content-max-width: 880px;
+  --noori-radius-sm: 6px;
+  --noori-radius-md: 10px;
+  --noori-radius-lg: 14px;
+  --noori-radius-full: 9999px;
+
+  /* Transitions */
+  --noori-transition: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Theme (Default) */
+html[data-theme="dark"] {
+  --noori-bg: #0b0f19;
+  --noori-bg-subtle: #0f172a;
+  --noori-surface: #131c31;
+  --noori-surface-hover: #1a2642;
+  --noori-surface-active: #223254;
+  --noori-border: #1e293b;
+  --noori-border-light: #2d3c59;
+
+  /* Typography */
+  --noori-text: #f1f5f9;
+  --noori-text-muted: #94a3b8;
+  --noori-text-subtle: #64748b;
+  --noori-heading: #ffffff;
+
+  /* Deep Tech Accents (Indigo & Cyan) */
+  --noori-primary: #6366f1;
+  --noori-primary-glow: rgba(99, 102, 241, 0.25);
+  --noori-primary-hover: #4f46e5;
+  --noori-cyan: #06b6d4;
+  --noori-cyan-glow: rgba(6, 182, 212, 0.2);
+  --noori-cyan-hover: #0891b2;
+  --noori-accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  --noori-accent-border: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(6,182,212,0.5));
+
+  /* Shadows */
+  --noori-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --noori-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --noori-shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+
+  /* Code & Syntax */
+  --noori-code-bg: #0d1322;
+  --noori-code-border: #1e293b;
+  --noori-inline-code-bg: rgba(99, 102, 241, 0.12);
+  --noori-inline-code-text: #38bdf8;
+}
+
+/* Light Theme */
+html[data-theme="light"] {
+  --noori-bg: #f8fafc;
+  --noori-bg-subtle: #f1f5f9;
+  --noori-surface: #ffffff;
+  --noori-surface-hover: #f1f5f9;
+  --noori-surface-active: #e2e8f0;
+  --noori-border: #e2e8f0;
+  --noori-border-light: #cbd5e1;
+
+  /* Typography */
+  --noori-text: #334155;
+  --noori-text-muted: #64748b;
+  --noori-text-subtle: #94a3b8;
+  --noori-heading: #0f172a;
+
+  /* Deep Tech Accents */
+  --noori-primary: #4f46e5;
+  --noori-primary-glow: rgba(79, 70, 229, 0.15);
+  --noori-primary-hover: #4338ca;
+  --noori-cyan: #0891b2;
+  --noori-cyan-glow: rgba(8, 145, 178, 0.15);
+  --noori-cyan-hover: #0e7490;
+  --noori-accent-gradient: linear-gradient(135deg, #4f46e5 0%, #0891b2 100%);
+  --noori-accent-border: linear-gradient(135deg, rgba(79,70,229,0.3), rgba(8,145,178,0.3));
+
+  /* Shadows */
+  --noori-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --noori-shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --noori-shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.08);
+
+  /* Code & Syntax */
+  --noori-code-bg: #f8fafc;
+  --noori-code-border: #e2e8f0;
+  --noori-inline-code-bg: rgba(79, 70, 229, 0.08);
+  --noori-inline-code-text: #0284c7;
+}
+
+/* Base Styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--noori-font-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--noori-text);
+  background-color: var(--noori-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--noori-primary);
+  text-decoration: none;
+  transition: color var(--noori-transition);
+}
+
+a:hover {
+  color: var(--noori-cyan);
+}
+
+/* ==========================================================================
+   1. Ecosystem Multi-Project Bar
+   ========================================================================== */
+.noori-ecosystem-bar {
+  background: var(--noori-bg-subtle);
+  border-bottom: 1px solid var(--noori-border);
+  height: var(--noori-ecosystem-height);
+  font-size: 0.8125rem;
+  position: relative;
+  z-index: 40;
+}
+
+.noori-ecosystem-container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.noori-ecosystem-container::-webkit-scrollbar {
+  display: none;
+}
+
+.noori-ecosystem-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--noori-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.noori-ecosystem-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--noori-cyan);
+  box-shadow: 0 0 8px var(--noori-cyan);
+}
+
+.noori-ecosystem-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.noori-ecosystem-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--noori-radius-sm);
+  color: var(--noori-text-muted);
+  font-weight: 500;
+  transition: all var(--noori-transition);
+}
+
+.noori-ecosystem-link:hover {
+  color: var(--noori-text);
+  background: var(--noori-surface);
+}
+
+.noori-ecosystem-link.is-active {
+  color: var(--noori-heading);
+  background: var(--noori-surface-hover);
+  font-weight: 600;
+}
+
+.noori-ecosystem-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--noori-radius-full);
+  background: var(--noori-primary-glow);
+  color: var(--noori-primary);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+/* ==========================================================================
+   2. Main Header
+   ========================================================================== */
+.noori-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--noori-border);
+  height: var(--noori-header-height);
+  transition: background-color var(--noori-transition), border-color var(--noori-transition);
+}
+
+html[data-theme="light"] .noori-header {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.noori-header-inner {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* Header Left: Brand */
+.noori-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.noori-sidebar-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--noori-border);
+  color: var(--noori-text-muted);
+  padding: 0.5rem;
+  border-radius: var(--noori-radius-sm);
+  cursor: pointer;
+  transition: all var(--noori-transition);
+}
+
+.noori-sidebar-toggle:hover {
+  color: var(--noori-text);
+  background: var(--noori-surface);
+}
+
+.noori-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.noori-logo-fallback {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--noori-radius-md);
+  background: var(--noori-accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 0 16px var(--noori-primary-glow);
+}
+
+.noori-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: var(--noori-radius-full);
+  object-fit: cover;
+  box-shadow: 0 0 12px var(--noori-cyan-glow);
+  transition: transform var(--noori-transition), box-shadow var(--noori-transition);
+  flex-shrink: 0;
+}
+
+.noori-logo:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 18px var(--noori-cyan);
+}
+
+.noori-brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.noori-brand-name {
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--noori-heading);
+}
+
+.noori-brand-version {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--noori-radius-full);
+  background: var(--noori-surface);
+  color: var(--noori-cyan);
+  border: 1px solid var(--noori-border);
+}
+
+/* Header Center: Search */
+.noori-header-center {
+  flex: 1;
+  max-width: 480px;
+}
+
+.noori-search-wrapper {
+  position: relative;
+}
+
+.noori-search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.noori-search-icon {
+  position: absolute;
+  left: 0.85rem;
+  color: var(--noori-text-subtle);
+  pointer-events: none;
+}
+
+.noori-search-input {
+  width: 100%;
+  padding: 0.5rem 2.5rem 0.5rem 2.4rem;
+  font-family: var(--noori-font-sans);
+  font-size: 0.875rem;
+  border-radius: var(--noori-radius-full);
+  border: 1px solid var(--noori-border);
+  background: var(--noori-surface);
+  color: var(--noori-text);
+  transition: all var(--noori-transition);
+}
+
+.noori-search-input:focus {
+  outline: none;
+  border-color: var(--noori-primary);
+  background: var(--noori-bg);
+  box-shadow: 0 0 0 3px var(--noori-primary-glow);
+}
+
+.noori-search-kbd {
+  position: absolute;
+  right: 0.85rem;
+  font-family: var(--noori-font-mono);
+  font-size: 0.7rem;
+  color: var(--noori-text-subtle);
+  background: var(--noori-bg);
+  border: 1px solid var(--noori-border);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+/* Header Right: Actions */
+.noori-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.noori-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.noori-icon-button, .noori-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--noori-radius-md);
+  color: var(--noori-text-muted);
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--noori-transition);
+}
+
+.noori-icon-button:hover, .noori-theme-toggle:hover {
+  color: var(--noori-text);
+  background: var(--noori-surface);
+  border-color: var(--noori-border);
+}
+
+/* Theme toggle sun / moon icons */
+html[data-theme="dark"] .noori-icon-sun {
+  display: block;
+}
+html[data-theme="dark"] .noori-icon-moon {
+  display: none;
+}
+
+html[data-theme="light"] .noori-icon-sun {
+  display: none;
+}
+html[data-theme="light"] .noori-icon-moon {
+  display: block;
+}
+
+/* ==========================================================================
+   3. Three-Column Layout Container
+   ========================================================================== */
+.noori-layout-container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  min-height: calc(100vh - var(--noori-header-height) - var(--noori-ecosystem-height));
+  position: relative;
+}
+
+/* Left Sidebar */
+.noori-sidebar {
+  width: var(--noori-sidebar-width);
+  flex-shrink: 0;
+  border-right: 1px solid var(--noori-border);
+  position: sticky;
+  top: var(--noori-header-height);
+  height: calc(100vh - var(--noori-header-height));
+  overflow-y: auto;
+  padding: 2rem 1.25rem 2rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--noori-border) transparent;
+}
+
+.noori-sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+.noori-sidebar::-webkit-scrollbar-thumb {
+  background: var(--noori-border);
+  border-radius: 4px;
+}
+
+.noori-sidebar-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--noori-radius-full);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  color: var(--noori-cyan);
+  font-size: 0.78rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.noori-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--noori-cyan);
+  box-shadow: 0 0 8px var(--noori-cyan);
+}
+
+.noori-sidebar-nav-header {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--noori-text-subtle);
+  margin-bottom: 0.75rem;
+}
+
+/* Sidebar Toctree */
+.noori-toc-tree ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.noori-toc-tree li {
+  margin: 0.2rem 0;
+}
+
+.noori-toc-tree li a {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--noori-radius-sm);
+  color: var(--noori-text-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4;
+  transition: all var(--noori-transition);
+}
+
+.noori-toc-tree li a:hover {
+  color: var(--noori-text);
+  background: var(--noori-surface);
+}
+
+.noori-toc-tree li.current > a {
+  color: var(--noori-cyan);
+  background: var(--noori-surface-hover);
+  font-weight: 600;
+  border-left: 2px solid var(--noori-cyan);
+}
+
+.noori-toc-tree ul ul {
+  padding-left: 1rem;
+  margin-top: 0.25rem;
+  border-left: 1px solid var(--noori-border);
+}
+
+.noori-toc-tree ul ul li a {
+  font-size: 0.84rem;
+  padding: 0.3rem 0.5rem;
+}
+
+/* Middle Main Content */
+.noori-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2.5rem 3rem 4rem 3rem;
+}
+
+.noori-content-wrapper {
+  max-width: var(--noori-content-max-width);
+  margin: 0 auto;
+}
+
+/* Breadcrumbs */
+.noori-breadcrumbs {
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+}
+
+.noori-breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.noori-breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.noori-breadcrumb-link {
+  color: var(--noori-text-muted);
+  transition: color var(--noori-transition);
+}
+
+.noori-breadcrumb-link:hover {
+  color: var(--noori-primary);
+}
+
+.noori-breadcrumb-separator {
+  color: var(--noori-text-subtle);
+}
+
+.noori-breadcrumb-current {
+  color: var(--noori-text);
+  font-weight: 500;
+}
+
+/* Article & Content Typography */
+.noori-article {
+  margin-bottom: 3rem;
+}
+
+.noori-article h1 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  color: var(--noori-heading);
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--noori-border);
+}
+
+.noori-article h2 {
+  font-size: 1.65rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--noori-heading);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.noori-article h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--noori-heading);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.noori-article h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--noori-heading);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.noori-article p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.noori-article ul, .noori-article ol {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.noori-article li {
+  margin-bottom: 0.35rem;
+}
+
+/* Right Secondary Sidebar (TOC) */
+.noori-secondary-sidebar {
+  width: var(--noori-toc-width);
+  flex-shrink: 0;
+  position: sticky;
+  top: var(--noori-header-height);
+  height: calc(100vh - var(--noori-header-height));
+  overflow-y: auto;
+  padding: 2.5rem 0 2rem 1.5rem;
+  border-left: 1px solid var(--noori-border);
+  scrollbar-width: none;
+}
+
+.noori-secondary-sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.noori-toc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--noori-text-subtle);
+  margin-bottom: 1rem;
+}
+
+.noori-page-toc ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.noori-page-toc li {
+  margin: 0.35rem 0;
+}
+
+.noori-page-toc a {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--noori-text-muted);
+  line-height: 1.4;
+  transition: all var(--noori-transition);
+}
+
+.noori-page-toc a:hover {
+  color: var(--noori-cyan);
+}
+
+.noori-page-toc ul ul {
+  padding-left: 0.85rem;
+  border-left: 1px solid var(--noori-border);
+  margin-top: 0.25rem;
+}
+
+.noori-secondary-actions {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--noori-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.noori-page-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--noori-text-muted);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color var(--noori-transition);
+}
+
+.noori-page-action:hover {
+  color: var(--noori-cyan);
+}
+
+/* ==========================================================================
+   4. Pagination Cards (Previous / Next)
+   ========================================================================== */
+.noori-pagination {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--noori-border);
+}
+
+.noori-pagination-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--noori-radius-md);
+  border: 1px solid var(--noori-border);
+  background: var(--noori-surface);
+  text-decoration: none;
+  transition: all var(--noori-transition);
+}
+
+.noori-pagination-card:hover {
+  border-color: var(--noori-primary);
+  background: var(--noori-surface-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--noori-shadow-md);
+}
+
+.noori-pagination-prev {
+  text-align: left;
+}
+
+.noori-pagination-next {
+  text-align: right;
+}
+
+.noori-pagination-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--noori-text-subtle);
+  margin-bottom: 0.4rem;
+}
+
+.noori-pagination-next .noori-pagination-sub {
+  justify-content: flex-end;
+}
+
+.noori-pagination-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--noori-heading);
+}
+
+/* ==========================================================================
+   5. Footer
+   ========================================================================== */
+.noori-footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--noori-border);
+  font-size: 0.85rem;
+  color: var(--noori-text-muted);
+}
+
+.noori-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.noori-footer p {
+  margin: 0.2rem 0;
+}
+
+/* ==========================================================================
+   6. Responsive Mobile Drawer
+   ========================================================================== */
+.noori-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 45;
+}
+
+@media (max-width: 1180px) {
+  .noori-secondary-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .noori-sidebar-toggle {
+    display: inline-flex;
+  }
+
+  .noori-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -320px;
+    width: 300px;
+    height: 100vh;
+    z-index: 50;
+    background: var(--noori-bg);
+    padding: 1.5rem;
+    box-shadow: var(--noori-shadow-lg);
+    transition: left var(--noori-transition);
+  }
+
+  .noori-sidebar.is-open {
+    left: 0;
+  }
+
+  .noori-backdrop.is-open {
+    display: block;
+  }
+
+  .noori-main {
+    padding: 2rem 1rem 3rem 1rem;
+  }
+
+  .noori-header-center {
+    max-width: 260px;
+  }
+
+  .noori-pagination {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   7. Direction Switcher (LTR / RTL)
+   ========================================================================== */
+.noori-direction-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 0.75rem;
+  border-radius: var(--noori-radius-full);
+  font-family: var(--noori-font-sans);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--noori-cyan);
+  background: var(--noori-surface);
+  border: 1px solid var(--noori-border);
+  cursor: pointer;
+  transition: all var(--noori-transition);
+}
+
+.noori-direction-toggle:hover {
+  background: var(--noori-surface-hover);
+  border-color: var(--noori-cyan);
+  box-shadow: 0 0 10px var(--noori-cyan-glow);
+}
+
+html[dir="ltr"] .noori-dir-rtl {
+  display: none;
+}
+html[dir="ltr"] .noori-dir-ltr {
+  display: inline;
+}
+
+html[dir="rtl"] .noori-dir-ltr {
+  display: none;
+}
+html[dir="rtl"] .noori-dir-rtl {
+  display: inline;
+}
+
+/* ==========================================================================
+   8. Comprehensive Right-to-Left (RTL) Layout (Arabic, Persian, Urdu, etc.)
+   ========================================================================== */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+html[dir="rtl"] body {
+  font-family: 'Cairo', 'Vazirmatn', var(--noori-font-sans);
+}
+
+/* Header in RTL */
+html[dir="rtl"] .noori-search-icon {
+  left: auto;
+  right: 0.85rem;
+}
+
+html[dir="rtl"] .noori-search-input {
+  padding: 0.5rem 2.4rem 0.5rem 2.5rem;
+  font-family: 'Cairo', var(--noori-font-sans);
+}
+
+html[dir="rtl"] .noori-search-kbd {
+  right: auto;
+  left: 0.85rem;
+}
+
+/* Sidebar in RTL */
+html[dir="rtl"] .noori-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--noori-border);
+  padding: 2rem 0 2rem 1.25rem;
+}
+
+html[dir="rtl"] .noori-toc-tree li.current > a {
+  border-left: none;
+  border-right: 2px solid var(--noori-cyan);
+}
+
+html[dir="rtl"] .noori-toc-tree ul ul {
+  padding-left: 0;
+  padding-right: 1rem;
+  border-left: none;
+  border-right: 1px solid var(--noori-border);
+}
+
+/* Right Secondary On-Page TOC in RTL */
+html[dir="rtl"] .noori-secondary-sidebar {
+  border-left: none;
+  border-right: 1px solid var(--noori-border);
+  padding: 2.5rem 1.5rem 2rem 0;
+}
+
+html[dir="rtl"] .noori-page-toc ul ul {
+  padding-left: 0;
+  padding-right: 0.85rem;
+  border-left: none;
+  border-right: 1px solid var(--noori-border);
+}
+
+/* Breadcrumbs in RTL */
+html[dir="rtl"] .noori-breadcrumbs {
+  direction: rtl;
+}
+
+/* Article Lists in RTL */
+html[dir="rtl"] .noori-article ul,
+html[dir="rtl"] .noori-article ol {
+  padding-left: 0;
+  padding-right: 1.5rem;
+}
+
+/* Admonitions in RTL */
+html[dir="rtl"] .admonition {
+  border-left: none;
+  border-right: 4px solid;
+}
+
+html[dir="rtl"] .admonition-title {
+  border-top-right-radius: 0;
+  border-top-left-radius: var(--noori-radius-md);
+}
+
+/* Code Blocks in RTL: Always remain LTR for clean syntax presentation */
+html[dir="rtl"] div.highlight,
+html[dir="rtl"] pre,
+html[dir="rtl"] code,
+html[dir="rtl"] .highlight {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+html[dir="rtl"] .noori-copy-code-btn {
+  left: auto;
+  right: 0.65rem;
+}
+
+/* Pagination in RTL */
+html[dir="rtl"] .noori-pagination-prev {
+  text-align: right;
+}
+
+html[dir="rtl"] .noori-pagination-next {
+  text-align: left;
+}
+
+html[dir="rtl"] .noori-pagination-next .noori-pagination-sub {
+  justify-content: flex-start;
+}
+
+html[dir="rtl"] .noori-pagination-prev .noori-pagination-sub svg,
+html[dir="rtl"] .noori-pagination-next .noori-pagination-sub svg {
+  transform: rotate(180deg);
+}
+
+/* Mobile Sidebar in RTL */
+@media (max-width: 900px) {
+  html[dir="rtl"] .noori-sidebar {
+    left: auto;
+    right: -320px;
+    transition: right var(--noori-transition);
+  }
+
+  html[dir="rtl"] .noori-sidebar.is-open {
+    right: 0;
+    left: auto;
+  }
+}
+

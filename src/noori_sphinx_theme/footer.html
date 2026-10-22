@@ -1,0 +1,20 @@
+<footer class="noori-footer">
+  <div class="noori-footer-inner">
+    <div class="noori-footer-left">
+      {% if copyright %}
+      <p class="noori-footer-copyright">
+        &copy; {{ copyright }}.
+      </p>
+      {% endif %}
+      <p class="noori-footer-credits">
+        {{ theme_footer_tagline or "Built with Noori Sphinx Theme." }}
+        Powered by <a href="https://www.sphinx-doc.org/" target="_blank" rel="noopener">Sphinx {{ sphinx_version }}</a>.
+      </p>
+    </div>
+    {% if last_updated %}
+    <div class="noori-footer-right">
+      <span class="noori-last-updated">Last updated: {{ last_updated }}</span>
+    </div>
+    {% endif %}
+  </div>
+</footer>

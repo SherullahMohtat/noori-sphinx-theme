@@ -1,0 +1,24 @@
+{% if theme_show_breadcrumbs %}
+<nav class="noori-breadcrumbs" aria-label="Breadcrumbs">
+  <ol class="noori-breadcrumb-list">
+    <li class="noori-breadcrumb-item">
+      <a href="{{ pathto(master_doc) }}" class="noori-breadcrumb-link" aria-label="Home">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+      </a>
+    </li>
+    {% for parent in parents %}
+    <li class="noori-breadcrumb-separator">/</li>
+    <li class="noori-breadcrumb-item">
+      <a href="{{ parent.link }}" class="noori-breadcrumb-link">{{ parent.title }}</a>
+    </li>
+    {% endfor %}
+    <li class="noori-breadcrumb-separator">/</li>
+    <li class="noori-breadcrumb-item noori-breadcrumb-current" aria-current="page">
+      <span>{{ title|striptags }}</span>
+    </li>
+  </ol>
+</nav>
+{% endif %}

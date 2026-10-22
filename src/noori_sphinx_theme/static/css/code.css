@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Code Blocks & Syntax Styling - Noori Sphinx Theme
+   ========================================================================== */
+
+/* Inline Code */
+code, tt {
+  font-family: var(--noori-font-mono);
+  font-size: 0.88em;
+  padding: 0.2em 0.45em;
+  border-radius: 4px;
+  background-color: var(--noori-inline-code-bg);
+  color: var(--noori-inline-code-text);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+/* Code Blocks Container */
+div.highlight, pre {
+  font-family: var(--noori-font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+div.highlight {
+  position: relative;
+  margin: 1.5rem 0;
+  border-radius: var(--noori-radius-md);
+  background: var(--noori-code-bg);
+  border: 1px solid var(--noori-code-border);
+  box-shadow: var(--noori-shadow-sm);
+  overflow: hidden;
+}
+
+div.highlight pre {
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--noori-border) transparent;
+}
+
+div.highlight pre::-webkit-scrollbar {
+  height: 6px;
+}
+div.highlight pre::-webkit-scrollbar-thumb {
+  background: var(--noori-border);
+  border-radius: 3px;
+}
+
+/* Copy Code Button */
+.noori-copy-code-btn {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.65rem;
+  font-family: var(--noori-font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--noori-text-muted);
+  background: rgba(19, 28, 49, 0.7);
+  border: 1px solid var(--noori-border);
+  border-radius: var(--noori-radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: all var(--noori-transition);
+  backdrop-filter: blur(4px);
+}
+
+div.highlight:hover .noori-copy-code-btn {
+  opacity: 1;
+}
+
+.noori-copy-code-btn:hover {
+  color: var(--noori-heading);
+  background: var(--noori-surface-hover);
+  border-color: var(--noori-cyan);
+}
+
+.noori-copy-code-btn.is-copied {
+  color: #10b981;
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* Syntax Highlighting Tweaks */
+html[data-theme="dark"] .highlight .k,
+html[data-theme="dark"] .highlight .kd,
+html[data-theme="dark"] .highlight .kn,
+html[data-theme="dark"] .highlight .kp,
+html[data-theme="dark"] .highlight .kr {
+  color: #c084fc; /* purple keyword */
+  font-weight: 600;
+}
+
+html[data-theme="dark"] .highlight .s,
+html[data-theme="dark"] .highlight .s1,
+html[data-theme="dark"] .highlight .s2,
+html[data-theme="dark"] .highlight .sa,
+html[data-theme="dark"] .highlight .sb {
+  color: #6ee7b7; /* green strings */
+}
+
+html[data-theme="dark"] .highlight .nf,
+html[data-theme="dark"] .highlight .fm {
+  color: #38bdf8; /* cyan functions */
+}
+
+html[data-theme="dark"] .highlight .nc,
+html[data-theme="dark"] .highlight .nn {
+  color: #fcd34d; /* yellow classes */
+}
+
+html[data-theme="dark"] .highlight .c,
+html[data-theme="dark"] .highlight .c1,
+html[data-theme="dark"] .highlight .ch,
+html[data-theme="dark"] .highlight .cm {
+  color: #64748b; /* muted comments */
+  font-style: italic;
+}
+
+html[data-theme="dark"] .highlight .nb {
+  color: #93c5fd; /* blue builtins */
+}
+
+html[data-theme="dark"] .highlight .mi,
+html[data-theme="dark"] .highlight .mf {
+  color: #fb923c; /* orange numbers */
+}
+
+/* Line numbers */
+.linenos {
+  color: var(--noori-text-subtle);
+  user-select: none;
+  padding-right: 1.25rem;
+  border-right: 1px solid var(--noori-border);
+  margin-right: 1rem;
+}

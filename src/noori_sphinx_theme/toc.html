@@ -1,0 +1,38 @@
+{% if theme_show_toc and toc %}
+<aside class="noori-secondary-sidebar" id="noori-secondary-sidebar">
+  <div class="noori-secondary-inner">
+    <div class="noori-toc-header">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="21" y1="10" x2="7" y2="10"></line>
+        <line x1="21" y1="6" x2="3" y2="6"></line>
+        <line x1="21" y1="14" x2="3" y2="14"></line>
+        <line x1="21" y1="18" x2="7" y2="18"></line>
+      </svg>
+      <span>On this page</span>
+    </div>
+
+    <nav class="noori-page-toc" aria-label="Page Table of Contents">
+      {{ toc }}
+    </nav>
+
+    <div class="noori-secondary-actions">
+      {% if theme_github_url and pagename %}
+      <a href="{{ theme_github_url }}/blob/main/docs/{{ pagename }}{{ page_source_suffix }}" class="noori-page-action" target="_blank" rel="noopener noreferrer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+        </svg>
+        <span>Suggest an edit</span>
+      </a>
+      {% endif %}
+
+      <button class="noori-page-action" id="noori-back-to-top" aria-label="Scroll back to top">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+        <span>Back to top</span>
+      </button>
+    </div>
+  </div>
+</aside>
+{% endif %}
