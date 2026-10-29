@@ -1,7 +1,7 @@
 # Noori Sphinx Theme
 
 <p align="center">
-  <img src="docs/_static/logo.png" width="110" height="110" alt="Noori Sphinx Theme Logo" style="border-radius: 50%;" />
+  <img src="https://raw.githubusercontent.com/sherullahmohtat/noori-sphinx-theme/main/docs/_static/logo.png" width="110" height="110" alt="Noori Sphinx Theme Logo" style="border-radius: 50%;" />
 </p>
 
 <p align="center">
