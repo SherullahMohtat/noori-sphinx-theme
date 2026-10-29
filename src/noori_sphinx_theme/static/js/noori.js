@@ -82,6 +82,23 @@
       });
     }
 
+    const sidebarClose = document.getElementById('noori-sidebar-close');
+    if (sidebarClose) {
+      sidebarClose.addEventListener('click', closeSidebar);
+    }
+
+    // Auto-close sidebar drawer on mobile when clicking navigation links
+    if (sidebar) {
+      const drawerLinks = sidebar.querySelectorAll('.noori-toc-tree a, .noori-sidebar-mobile-link');
+      drawerLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          if (window.innerWidth <= 900) {
+            closeSidebar();
+          }
+        });
+      });
+    }
+
     if (backdrop) {
       backdrop.addEventListener('click', closeSidebar);
     }
@@ -158,7 +175,53 @@
       block.appendChild(btn);
     });
 
-    // 5. Back to Top Button
+    // 5. Copy This Page Action
+    const copyPageBtn = document.getElementById('noori-copy-page');
+    if (copyPageBtn) {
+      copyPageBtn.addEventListener('click', async function () {
+        const article = document.querySelector('.noori-article');
+        if (!article) return;
+
+        // Clone article to avoid modifying the live document
+        const clone = article.cloneNode(true);
+
+        // Remove permalink links (¶) and code block copy buttons from copied text
+        clone.querySelectorAll('.headerlink, a.headerlink, .noori-copy-code-btn').forEach(function (el) {
+          el.remove();
+        });
+
+        const titleEl = clone.querySelector('h1') || document.querySelector('h1');
+        const title = titleEl ? titleEl.innerText.trim() : document.title;
+        const bodyText = clone.innerText.trim();
+        const pageUrl = window.location.href.split('#')[0];
+        const contentToCopy = `# ${title}\nSource: ${pageUrl}\n\n${bodyText}`;
+
+        try {
+          await navigator.clipboard.writeText(contentToCopy);
+          copyPageBtn.classList.add('is-copied');
+          copyPageBtn.innerHTML = `
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Copied!</span>
+          `;
+          setTimeout(function () {
+            copyPageBtn.classList.remove('is-copied');
+            copyPageBtn.innerHTML = `
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy this page</span>
+            `;
+          }, 2000);
+        } catch (err) {
+          console.error('Failed to copy page content: ', err);
+        }
+      });
+    }
+
+    // 6. Back to Top Button
     const backToTopBtn = document.getElementById('noori-back-to-top');
     if (backToTopBtn) {
       backToTopBtn.addEventListener('click', function () {
@@ -166,7 +229,7 @@
       });
     }
 
-    // 6. ScrollSpy for Right TOC
+    // 7. ScrollSpy for Right TOC
     const headings = Array.from(document.querySelectorAll('.noori-article h2, .noori-article h3'));
     const tocLinks = Array.from(document.querySelectorAll('.noori-page-toc a'));
 

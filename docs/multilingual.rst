@@ -7,11 +7,11 @@ Multilingual & RTL Support (العربية / English)
 Overview of RTL Features
 ========================
 
-* **Automatic Direction Detection**: When you set ``language = 'ar'`` (or ``fa``, ``ur``, ``he``, ``ps``) in Sphinx's ``conf.py``, the theme automatically applies ``dir="rtl"`` to the document and switches to optimized Arabic typography.
-* **Modern Arabic Typography**: Includes Google's **Cairo** and **Vazirmatn** web fonts, engineered specifically for high readability in technical documentation and code interfaces.
+* **Automatic Direction Detection**: When you set ``language = 'ar'`` (or ``fa``, ``ur``, ``he``, ``ps``) in Sphinx's ``conf.py``, the theme automatically applies ``dir="rtl"`` to the document.
+* **Unified Clean Typography**: Retains consistent, legible typography across English, Arabic, Pashto, Persian, and Urdu without forced font overrides.
 * **Mirrored Layout Components**: The sidebar, search bar, navigation tree, on-page table of contents, breadcrumbs, and callout borders automatically mirror seamlessly.
 * **Code Preservation**: All code snippets (Python, Bash, JSON, C++) automatically maintain strict LTR orientation with correct token syntax highlighting.
-* **Interactive Live Toggle**: Users can click the **[ عربي / EN ]** toggle in the header navbar to switch directions on the fly.
+* **Interactive Live Toggle**: Users can click the **[ RTL / LTR ]** direction button in the header navbar to switch text direction on the fly.
 
 Configuring Arabic in Sphinx
 ============================

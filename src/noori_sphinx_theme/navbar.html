@@ -91,9 +91,15 @@
         {% endif %}
 
         {% if theme_show_direction_toggle is not defined or theme_show_direction_toggle %}
-        <button class="noori-direction-toggle" id="noori-direction-toggle" aria-label="Toggle text direction (LTR / RTL)" title="Toggle Direction (LTR / RTL)">
-          <span class="noori-dir-indicator noori-dir-ltr">عربي</span>
-          <span class="noori-dir-indicator noori-dir-rtl">EN</span>
+        <button class="noori-direction-toggle" id="noori-direction-toggle" aria-label="Toggle text direction (LTR / RTL)" title="Toggle text direction (LTR / RTL)">
+          <svg class="noori-dir-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="17 11 21 7 17 3"></polyline>
+            <line x1="21" y1="7" x2="9" y2="7"></line>
+            <polyline points="7 13 3 17 7 21"></polyline>
+            <line x1="3" y1="17" x2="15" y2="17"></line>
+          </svg>
+          <span class="noori-dir-indicator noori-dir-ltr">RTL</span>
+          <span class="noori-dir-indicator noori-dir-rtl">LTR</span>
         </button>
         {% endif %}
 

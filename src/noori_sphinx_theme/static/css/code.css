@@ -73,6 +73,38 @@ div.highlight:hover .noori-copy-code-btn {
   opacity: 1;
 }
 
+@media (hover: none) {
+  .noori-copy-code-btn {
+    opacity: 0.9;
+  }
+}
+
+@media (max-width: 640px) {
+  div.highlight {
+    margin: 1.25rem 0;
+    border-radius: var(--noori-radius-sm);
+  }
+
+  div.highlight pre {
+    padding: 0.85rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .noori-copy-code-btn {
+    opacity: 0.9;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+    top: 0.4rem;
+    right: 0.4rem;
+  }
+
+  code, tt {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 .noori-copy-code-btn:hover {
   color: var(--noori-heading);
   background: var(--noori-surface-hover);
